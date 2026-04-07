@@ -1,0 +1,254 @@
+<html>
+        <head><title>Downloaded HTML</title></head>
+        <body>
+            <pre style="white-space: pre-wrap; word-wrap: break-word;"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSB 900 Analytical Range Predictor</title>
+    <style>
+        :root { --bg: #050a14; --card: #111b2d; --accent: #00d2ff; --text: #e2e8f0; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 15px; font-size: 14px; }
+        .wrapper { max-width: 700px; margin: auto; background: var(--card); padding: 25px; border-radius: 15px; border: 1px solid #1e293b; }
+        h1 { text-align: center; color: var(--accent); font-size: 1.3rem; text-transform: uppercase; margin-bottom: 25px; }
+        .section-title { display: block; border-left: 4px solid var(--accent); padding-left: 10px; margin: 25px 0 15px 0; font-weight: bold; color: var(--accent); text-transform: uppercase; font-size: 0.8rem; }
+        .q-row { margin-bottom: 18px; }
+        label { display: block; margin-bottom: 6px; color: #94a3b8; font-size: 0.85rem; }
+        select { width: 100%; padding: 12px; border-radius: 8px; background: #0a111e; color: #fff; border: 1px solid #334155; outline: none; }
+        button { width: 100%; padding: 18px; background: linear-gradient(45deg, #00d2ff, #3a7bd5); border: none; border-radius: 10px; color: #fff; font-weight: bold; font-size: 1.1rem; cursor: pointer; margin-top: 30px; }
+        #result { display: none; margin-top: 30px; text-align: center; padding: 25px; border: 2px solid var(--accent); border-radius: 12px; background: #050a14; }
+        .score-range { font-size: 3rem; font-weight: 900; color: var(--accent); margin: 10px 0; letter-spacing: -1px; }
+        .wish { color: #10b981; font-weight: bold; margin-top: 15px; display: block; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <h1>SSB 900 Analytical Range Predictor</h1>
+
+    <span class="section-title">Psychology</span>
+    <div class="q-row">
+        <label>TAT: Stories Completed</label>
+        <select id="tat">
+            <option value="45">12/12 - High detail, logical conclusions</option>
+            <option value="40">12/12 - Standard themes, logical endings</option>
+            <option value="35">11/12 - High quality but missed blank slide</option>
+            <option value="30">11/12 - Average quality, missed one</option>
+            <option value="20">10/12 - Rushed endings toward the end</option>
+            <option value="10">10/12 - Multiple blanks or weak stories</option>
+            <option value="0">Below 10 - Highly incomplete</option>
+        </select>
+    </div>
+    <div class="q-row">
+        <label>WAT: Words Attempted</label>
+        <select id="wat">
+            <option value="45">60/60 - All meaningful sentences</option>
+            <option value="40">55-59 - All meaningful</option>
+            <option value="35">50-54 - High quality</option>
+            <option value="25">45-49 - Average quality</option>
+            <option value="15">40-44 - Simple/Factual sentences</option>
+            <option value="5">35-39 - Multiple blanks</option>
+            <option value="0">Below 35 - Significant gaps</option>
+        </select>
+    </div>
+    <div class="q-row">
+        <label>SRT: Situations Attempted</label>
+        <select id="srt">
+            <option value="45">55+ Situations - Complete actions</option>
+            <option value="40">50-54 Situations - Detailed</option>
+            <option value="35">45-49 Situations - Practical</option>
+            <option value="25">40-44 Situations - Standard</option>
+            <option value="15">35-39 Situations - Brief</option>
+            <option value="5">30-34 Situations - Very brief</option>
+            <option value="0">Below 30 Situations</option>
+        </select>
+    </div>
+
+    <span class="section-title">GTO Tasks</span>
+    <div class="q-row">
+        <label>GD 1 & 2: Participation</label>
+        <select id="gd">
+            <option value="30">Led the group with 5+ logical points</option>
+            <option value="25">Active, gave 3-4 logical points</option>
+            <option value="20">Supported others with valid reasoning</option>
+            <option value="15">Spoke 2-3 times, balanced view</option>
+            <option value="10">Spoke 1-2 times, general points</option>
+            <option value="5">Mainly listened, agreed with others</option>
+            <option value="0">Dominating/Aggressive or Silent</option>
+        </select>
+    </div>
+    <div class="q-row">
+        <label>GPE: Planning & Discussion</label>
+        <select id="gpe">
+            <option value="30">Authored final plan, identified resources</option>
+            <option value="25">Nominated for group solution</option>
+            <option value="20">Major contributor to calculations</option>
+            <option value="15">Identified 1 major problem/solution</option>
+            <option value="10">Followed the logic, supported plan</option>
+            <option value="5">Agreed with group, minor input</option>
+            <option value="0">Confused/Gave illogical solutions</option>
+        </select>
+    </div>
+    <div class="q-row">
+        <label>PGT / HGT: Group Tasks</label>
+        <select id="pgt">
+            <option value="30">Found 3+ 'Golden Paths' when stuck</option>
+            <option value="25">Regularly gave workable ideas</option>
+            <option value="20">Executed others' ideas perfectly</option>
+            <option value="15">Suggested 1-2 ideas that worked</option>
+            <option value="10">Balanced participation</option>
+            <option value="5">Passive, carried rope/load only</option>
+            <option value="0">Obstacle to group/Broke rules</option>
+        </select>
+    </div>
+    <div class="q-row">
+        <label>GOR (Snake Race)</label>
+        <select id="gor">
+            <option value="20">Lead motivator, helped others cross</option>
+            <option value="15">High energy, carried snake throughout</option>
+            <option value="10">Followed all rules, cheered group</option>
+            <option value="5">Standard participation</option>
+            <option value="0">Tired easily but finished</option>
+        </select>
+    </div>
+    <div class="q-row">
+        <label>Lecturette</label>
+        <select id="lect">
+            <option value="25">Topic 1 (Hard), 3 mins, high confidence</option>
+            <option value="20">Topic 2 (Medium), 3 mins, structured</option>
+            <option value="15">Topic 3 (Easy), 3 mins, clear</option>
+            <option value="10">2.5 mins, minor stammers</option>
+            <option value="5">2 mins, basic content</option>
+            <option value="0">Under 2 mins</option>
+        </select>
+    </div>
+    <div class="q-row">
+        <label>Individual Obstacles (IO)</label>
+        <select id="io">
+            <option value="30">12+ (Completed all and repeated)</option>
+            <option value="25">10 Obstacles (All done)</option>
+            <option value="20">8-9 Obstacles</option>
+            <option value="15">7 Obstacles</option>
+            <option value="10">6 Obstacles</option>
+            <option value="5">5 Obstacles</option>
+            <option value="0">Below 5 Obstacles</option>
+        </select>
+    </div>
+    <div class="q-row">
+        <label>Command Task (CT)</label>
+        <select id="ct">
+            <option value="45">High Difficulty (3+ constraints, finished)</option>
+            <option value="35">Hard (2 constraints, finished)</option>
+            <option value="25">Medium (1 constraint, finished)</option>
+            <option value="10">Easy (No constraints added, finished fast)</option>
+            <option value="-25">Did Not Finish (DNF) - Time out/Stuck</option>
+            <option value="0">Standard (No constraints, hints given by GTO)</option>
+        </select>
+    </div>
+    <div class="q-row">
+        <label>FGT (Final Group Task)</label>
+        <select id="fgt">
+            <option value="20">Gave the final solution to finish</option>
+            <option value="15">Active worker in final stage</option>
+            <option value="10">Standard participation</option>
+            <option value="0">Passive/Tired</option>
+        </select>
+    </div>
+
+    <span class="section-title">Personal Interview & CIQs</span>
+    <div class="q-row">
+        <label>Interview Performance</label>
+        <select id="int_depth">
+            <option value="60">1. Mastered all CIQs perfectly, 60+ mins, No errors</option>
+            <option value="55">2. Smooth CIQ flow, High GK accuracy, 50+ mins</option>
+            <option value="50">3. Mastered 1st & 2nd CIQ, minor stumble in 3rd, 45+ mins</option>
+            <option value="45">4. Good CIQ sequence, grilled on Current Affairs, 40+ mins</option>
+            <option value="42">5. Answered CIQs in sequence, routine personal probing</option>
+            <option value="38">6. Missed 1-2 minor questions in CIQ Rapid Fire, 35+ mins</option>
+            <option value="34">7. Routine Interview, basic GK, standard CIQ flow</option>
+            <option value="30">8. Brief Interview, surface level PIQ, no deep probing</option>
+            <option value="25">9. Struggled with CIQ order/sequence, 25-30 mins</option>
+            <option value="20">10. Under 25 mins: Very formal, limited interaction</option>
+            <option value="15">11. Technical Heavy: Missed personal CIQs, grilled on acads</option>
+            <option value="10">12. Stressful: Fumbled CIQs under pressure, contradictory</option>
+            <option value="5">13. Fumbled 1st CIQ (Intro/Education) completely</option>
+            <option value="0">14. Felt like a formality, very short duration</option>
+        </select>
+    </div>
+
+    <span class="section-title">Conference Phase</span>
+    <div class="q-row">
+        <label>Waiting Time</label>
+        <select id="wait">
+            <option value="35">Under 1 Minute</option>
+            <option value="15">1 - 8 Minutes</option>
+            <option value="-75">8 - 15+ Minutes</option>
+        </select>
+    </div>
+    <div class="q-row">
+        <label>Conference Duration</label>
+        <select id="conf">
+            <option value="35">Under 2 Minutes</option>
+            <option value="15">2 - 10 Minutes</option>
+            <option value="-75">Over 10 Minutes</option>
+        </select>
+    </div>
+
+    <button onclick="calculate900()">GENERATE ANALYTICAL RANGE</button>
+
+    <div id="result">
+        <div class="score-range" id="final">000 - 000</div>
+        <p id="verdict" style="font-size: 0.9rem; margin-top: 10px;"></p>
+        <span class="wish">Best of luck for merit!</span>
+    </div>
+</div>
+
+<script>
+function calculate900() {
+    let base = 360; 
+    let surplus = 
+        parseInt(document.getElementById('tat').value) +
+        parseInt(document.getElementById('wat').value) +
+        parseInt(document.getElementById('srt').value) +
+        parseInt(document.getElementById('gd').value) +
+        parseInt(document.getElementById('gpe').value) +
+        parseInt(document.getElementById('pgt').value) +
+        parseInt(document.getElementById('gor').value) +
+        parseInt(document.getElementById('lect').value) +
+        parseInt(document.getElementById('io').value) +
+        parseInt(document.getElementById('ct').value) +
+        parseInt(document.getElementById('fgt').value) +
+        parseInt(document.getElementById('int_depth').value) +
+        parseInt(document.getElementById('wait').value) +
+        parseInt(document.getElementById('conf').value);
+
+    // Baseline calculation - strictly anchored
+    let midScore = base + (surplus - 215); 
+
+    // The 480 Barrier (Strict exponential decay)
+    if(midScore > 440) {
+        midScore = 440 + (midScore - 440) * 0.10; 
+    }
+
+    // Recommended floor
+    if(midScore < 360) midScore = 360 + (Math.random() * 2);
+
+    let low = Math.round(midScore - 4);
+    let high = Math.round(midScore + 5);
+
+    document.getElementById('final').innerText = low + " - " + high;
+    document.getElementById('result').style.display = 'block';
+
+    let v = document.getElementById('verdict');
+    if(midScore >= 445) v.innerText = "MERIT STATUS: TOP TIER";
+    else if(midScore >= 405) v.innerText = "MERIT STATUS: SECURE";
+    else if(midScore >= 385) v.innerText = "MERIT STATUS: QUALIFIED";
+    else v.innerText = "MERIT STATUS: BORDERLINE";
+}
+</script>
+</body>
+</html>
+</pre>
+        </body>
+    </html>
